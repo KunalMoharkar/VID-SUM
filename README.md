@@ -11,7 +11,7 @@ Gone are the days when studies meant going over long textbooks, trying to grasp 
 
 ### ENTER VID-SUM.
 
-What our project does is, it summarises any video, extracting only the regions in the video which are important and you have a short and sweet summary video that you can watch easily in less time and get the same information you would have got watching the whole video.
+What our project does is, it summarises any video, extracting only the regions in the video which are important and you have a short and sweet summary video that you can watch easily in less time and get the same information you would have got watching the whole video. *This results in a quick revision video which is very effective in the face of exams and will benefit a great lot of students like ourselves.*
 
 It does this by using the subtitles of the video.
 

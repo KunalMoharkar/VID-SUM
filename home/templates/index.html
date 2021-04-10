@@ -1,0 +1,25 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <form action="" method="POST">
+            {%csrf_token%}
+            
+            <input type="text" name="link", placeholder="paste youtube link here" />
+
+            <button type="submit">Summarize</button>
+
+        </form>
+
+
+        {%if result%}
+            <h1>Summarized Video output</h1>
+            <a href="/{{result}}">summarized video</a>
+        {%endif%}
+    </body>
+</html>

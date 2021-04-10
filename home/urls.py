@@ -5,5 +5,6 @@ from . import  views
 
 urlpatterns = [
     path('', views.index),
+    path('summarize/', views.summarize_view),
 ]
 

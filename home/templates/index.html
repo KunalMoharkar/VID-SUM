@@ -1,4 +1,4 @@
-
+{% load static %}
 
 <!DOCTYPE html>
 <html>
@@ -16,43 +16,68 @@
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         
+        <link rel="stylesheet" href="{% static 'index.css' %}">
 
     </head>
     <body>
+        <div class="container">
+            <h3>Summarize your Video</h3>
+            <form id="submit-form" action="" method="POST">
+                {%csrf_token%}
+                
+                <input id="link" type="text" name="link", placeholder="paste youtube link here" />
 
-        <form id="submit-form" action="" method="POST">
-            {%csrf_token%}
+                <button class="btn btn-primary" type="submit">Summarize</button>
+            </form>
+
+            <div id= "spinner" class="spinner-border text-success"></div>
+
+            <div id="alertbox" class="alert alert-success">
+                <a id="outputlink" href="/{{result}}">summarized video</a>
+            </div>
             
-            <input id="link" type="text" name="link", placeholder="paste youtube link here" />
-
-            <button type="submit">Summarize</button>
-
-        </form>
+        </div>
+      
 
 
-        {%if result%}
-            <h1>Summarized Video output</h1>
-            <a href="/{{result}}">summarized video</a>
-        {%endif%}
+        
+      
 
 
         <script>
             $("#submit-form").submit(function () {
-        
+                
+                spinner = $("#spinner");
+                spinner.css({'display':'block'});
+
+                alertbox = $("#alertbox");
+                outputlink = $("#outputlink");
+                
+
                 const received_link = $("#link").val();
                 alert(received_link);
-              //$.ajax({
 
-                //url: form.attr("data-validate-username-url"),
-                //data: form.serialize(),
-                //dataType: 'json',
-                //success: function (data) {
-                 // if (data.is_taken) {
-                 //   alert(data.error_message);
-                  //}
-                //}
-               
-              //});
+                $.ajax({
+                type: "POST",
+                url: "/home/summarize/",
+                data: {
+                    'link': received_link
+                },
+                success: function (data) {
+
+                    link = data.result;
+
+                    link = '/'+link;
+
+                    spinner.css({'display':'none'});
+                    alertbox.css({'display':'block'});
+                    outputlink.attr('href',link)
+                    console.log(data);
+                }
+                });
+                return false; 
+
+        
         
             });
 

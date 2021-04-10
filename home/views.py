@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -163,21 +164,18 @@ def download_video_srt(url):
     print((movie_filename,subtitle_filename))
     return movie_filename, subtitle_filename
 
-def home(request):
 
-   pass
+@csrf_exempt
+def summarize_view(request):
 
+   link = request.POST.get("link")
+   print(link)
+   movie_filename, subtitle_filename = download_video_srt(link)
+   output = get_summary(movie_filename,subtitle_filename)
+
+   return JsonResponse({'result':output})
 
 
 def index(request):
-
-    if request.method == "POST":
-
-        link = request.POST.get('link')
-        movie_filename, subtitle_filename = download_video_srt(link)
-        output = get_summary(movie_filename,subtitle_filename)
-        context = {'result':output}
-    
-        return render(request,"index.html",context)
 
     return render(request,"index.html")

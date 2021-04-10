@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: space-evenly;
     height: 60vh;
+    width: 80%;
 }
 
 .spinner-border{
@@ -18,4 +19,14 @@
 .alert{
 
     display: none;
+    width: 100%;
+}
+
+.form-group{
+    width: 300px;
+    text-align: center;
+}
+
+.btn{
+    margin-top: 10px;
 }

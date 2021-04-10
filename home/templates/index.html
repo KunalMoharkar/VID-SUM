@@ -22,18 +22,18 @@
     <body>
         <div class="container">
             <h3>Summarize your Video</h3>
-            <form id="submit-form" action="" method="POST">
+            <form class="form-group" id="submit-form" action="" method="POST">
                 {%csrf_token%}
-                
-                <input id="link" type="text" name="link", placeholder="paste youtube link here" />
-
+                <input class="form-control" id="link" type="text" name="link", placeholder="paste youtube link here" />
                 <button class="btn btn-primary" type="submit">Summarize</button>
             </form>
 
-            <div id= "spinner" class="spinner-border text-success"></div>
+            <div id= "spinner" class="spinner-border text-success">
+    
+            </div>
 
-            <div id="alertbox" class="alert alert-success">
-                <a id="outputlink" href="/{{result}}">summarized video</a>
+            <div id="alertbox" class="alert alert-info">
+                <a id="outputlink" href="#">summarized video</a>
             </div>
             
         </div>
@@ -51,12 +51,14 @@
                 spinner.css({'display':'block'});
 
                 alertbox = $("#alertbox");
+                alertbox.css({'display':'none'});
                 outputlink = $("#outputlink");
-                
+
+                form = $("#submit-form");
+                form.css({'display':'none'});
 
                 const received_link = $("#link").val();
-                alert(received_link);
-
+    
                 $.ajax({
                 type: "POST",
                 url: "/home/summarize/",
@@ -70,7 +72,9 @@
                     link = '/'+link;
 
                     spinner.css({'display':'none'});
+                    form.css({'display':'block'});
                     alertbox.css({'display':'block'});
+
                     outputlink.attr('href',link)
                     console.log(data);
                 }

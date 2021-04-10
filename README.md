@@ -18,9 +18,9 @@ It does this by using the subtitles of the video.
 
 
 ### Technology Stack:
-  1) Node.JS
-  2) Google Collab
-  3) Javafx
+  1) Python
+  2) Django
+  3) AJAX
   4) Machine Learning
  
  
@@ -31,4 +31,6 @@ It does this by using the subtitles of the video.
 * [Kunal Moharkar](https://github.com/KunalMoharkar)
 * [Dhruv Sharma](https://github.com/dsdroid1)
 * [Kartik Kshirsagar](https://github.com/kartikkshirsagar)
-* 
+
+### Made at:
+<a href="https://hack36.com"> <img src="http://bit.ly/BuiltAtHack36" height=20px> </a>

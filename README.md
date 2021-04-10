@@ -1,3 +1,4 @@
+![alt text](https://i.ibb.co/3vMYD6M/Made-at-Hack-36.png "HACK36 LOGO")
 # VID-SUM
 ## Submission of team ASP for Hack36 2021.
 ### Theme - Education
